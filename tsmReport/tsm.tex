@@ -1,0 +1,232 @@
+\documentclass[a4paper]{article}
+\usepackage{import}
+%\usepackage[english,vietnam]{babel}
+\usepackage[utf8]{inputenc}
+%\usepackage[utf8]{inputenc}
+%\usepackage[francais]{babel}
+\usepackage{a4wide,amssymb,epsfig,latexsym,array,hhline,fancyhdr}
+\usepackage[normalem]{ulem}
+%\usepackage{soul}
+\usepackage{listings}
+\usepackage{colortbl}
+\usepackage[makeroom]{cancel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol,longtable,amscd}
+\usepackage{diagbox}%Make diagonal lines in tables
+\usepackage{booktabs}
+\usepackage{alltt}
+\usepackage[framemethod=tikz]{mdframed}% For highlighting paragraph backgrounds
+\usepackage{caption,subcaption}
+
+\usepackage{lastpage}
+\usepackage[lined,boxed,commentsnumbered]{algorithm2e}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}							% Standard graphics package
+\usepackage{array}
+\usepackage{tabularx, caption}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{rotating}
+\usepackage{graphics}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{epsfig}
+\usepackage{minted}
+\usepackage{xcolor} % to access the named colour LightGray
+\definecolor{LightGray}{gray}{0.9}
+\usemintedstyle{emacs}
+\usepackage{tikz}
+\usetikzlibrary{arrows,snakes,backgrounds}
+\usepackage[unicode]{hyperref}
+\hypersetup{
+    urlcolor=blue,
+    linkcolor=black,
+    citecolor=black,
+    colorlinks=true,
+    pdfpagemode=FullScreen,
+    pdftitle={The Travelling Salesman Problem},
+} 
+%\usepackage{pstcol} 								% PSTricks with the standard color package
+%\usepackage{background}
+%\backgroundsetup{contents=\includegraphics{Images/hcmut.png}, scale=0.5, opacity=0.25, angle = 0}
+\usepackage[normalem]{ulem}
+
+\def\thesislayout{	% A4: 210 × 297
+	\geometry{
+		a4paper,
+		total={160mm,240mm},  % fix over page
+		left=30mm,
+		top=30mm,
+	}
+}
+\thesislayout
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{40pt}
+\pagestyle{fancy}
+\fancyhead{} % clear all header fields
+\fancyhead[L]{
+ \begin{tabular}{rl}
+    \begin{picture}(25,15)(0,0)
+    \put(0,-8){\includegraphics[width=8mm, height=8mm]{Images/hcmut.png}}
+    %\put(0,-8){\epsfig{width=10mm,figure=hcmut.eps}}
+   \end{picture}&
+	%\includegraphics[width=8mm, height=8mm]{hcmut.png} & %
+	\begin{tabular}{l}
+		\textbf{\textcolor{blue}{\bf \ttfamily Ho Chi Minh City University of Technology}}\\
+		\textbf{\textcolor{blue}{\bf \ttfamily Faculty of Computer Science and Engineering}}
+	\end{tabular} 	
+ \end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{l}
+		\tiny \bf \\
+		\tiny \bf 
+	\end{tabular}  }
+\fancyfoot{} % clear all footer fields
+\fancyfoot[L]{\scriptsize \ttfamily Truong Gia Ky Nam - 2352787}
+\fancyfoot[R]{\scriptsize \ttfamily Page {\thepage}/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0.3pt}
+
+
+%%%
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{3}
+\makeatletter
+\newcounter {subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection .\@alph\c@subsubsubsection}
+\newcommand\subsubsubsection{\@startsection{subsubsubsection}{4}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+\newcommand*\l@subsubsubsection{\@dottedtocline{3}{10.0em}{4.1em}}
+\newcommand*{\subsubsubsectionmark}[1]{}
+\makeatother
+
+\sloppy
+\captionsetup[figure]{labelfont={small,bf},textfont={small,it},belowskip=-1pt,aboveskip=-9pt}
+%space remove between caption, figure, and text
+\captionsetup[table]{labelfont={small,bf},textfont={small,it},belowskip=-1pt,aboveskip=7pt}
+%space remove between caption, table, and text
+
+%\floatplacement{figure}{H}%forced here float placement automatically for figures
+%\floatplacement{table}{H}%forced here float placement automatically for table
+%the following settings (11 lines) are to remove white space before or after the figures and tables
+%\setcounter{topnumber}{2}
+%\setcounter{bottomnumber}{2}
+%\setcounter{totalnumber}{4}
+%\renewcommand{\topfraction}{0.85}
+%\renewcommand{\bottomfraction}{0.85}
+%\renewcommand{\textfraction}{0.15}
+%\renewcommand{\floatpagefraction}{0.8}
+%\renewcommand{\textfraction}{0.1}
+\setlength{\floatsep}{5pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{5pt plus 2pt minus 2pt}
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+
+\thesislayout
+
+
+
+\begin{document}
+\begin{titlepage}
+\begin{center}
+\textbf{\Large VIETNAM NATIONAL UNIVERSITY HO CHI MINH CITY} \\
+
+\vspace{7pt}
+\textbf{\Large HO CHI MINH CITY UNIVERSITY OF TECHNOLOGY} \\
+
+\vspace{7pt}
+\textbf{\Large FACULTY OF COMPUTER SCIENCE AND ENGINEERING}
+\end{center}
+
+\vspace{1cm}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=3cm]{Images/hcmut.png}
+\end{center}
+\end{figure}
+
+\vspace{1cm}
+
+
+\begin{center}
+\begin{tabular}{ccc}
+	\multicolumn{3}{l}{\textbf{{\Large \textcolor{blue}{DISCRETE STRUCTURE}}}}\\
+	~~\\
+	\arrayrulecolor{blue}\hline
+	\\
+	\multicolumn{3}{l}{\textbf{{\Large \textcolor{blue}{Assignment 1} }}}\\
+	\\
+	
+	\multicolumn{3}{c}{\textbf{{\Huge \textcolor{blue}{Bellman-Ford Algorithm In}}}}\\
+	\\
+    
+    \multicolumn{3}{c}{\textbf{{\Huge \textcolor{blue}{The Travelling Salemen Problem}}}}\\
+	\\
+	\arrayrulecolor{blue}\hline \\ \\
+
+    \multicolumn{1}{r}{\textbf{\Large Instructor(s):}} & \multicolumn{2}{l}{\Large Nguyen Van Minh Man, \textit{Mahidol University}} \\ \\
+    \multicolumn{1}{r}{} & \multicolumn{2}{l}{\Large Tran Tuan Anh, \textit{CSE-HCMUT}} \\ \\
+
+    \\ \\
+
+    \multicolumn{1}{r}{\Large \textbf{Author:}} & \multicolumn{2}{l}{\Large Truong Gia Ky Nam} \\ \\
+
+    \multicolumn{1}{r}{\Large \textbf{ID:}} & \multicolumn{2}{l}{\Large 2352787} \\ \\
+
+    \multicolumn{1}{r}{\Large \textbf{Email:}} & \multicolumn{2}{l}{\Large nam.truonggiaky@hcmut.edu.vn} \\ \\
+\end{tabular}
+\end{center}
+
+\vspace{4cm}
+
+\begin{center}
+{\textbf{\Large Ho Chi Minh City, 4/2024}}
+\end{center}
+\end{titlepage}
+
+\thispagestyle{empty}
+\setcounter{page}{0}
+\newpage
+\tableofcontents
+\newpage
+
+%\thispagestyle{empty}
+\section{Problem 1}
+BLA BLA BLA
+
+\pagebreak
+
+\begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos
+]{cpp}
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    //Use this to print Hello World
+    cout << "Hello World";
+    return 0;
+}
+\end{minted}
+\begin{thebibliography}{80}
+
+\bibitem{CVX}
+CVX Introduction
+``\textbf{link: http://cvxr.com/cvx/doc/intro.html/}'',
+\textit{What is CVX}.
+
+\end{thebibliography}
+\end{document}
+
