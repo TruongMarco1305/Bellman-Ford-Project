@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2024.2.24)  11 APR 2024 19:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2024.2.24)  12 APR 2024 22:52
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1162,18 +1162,18 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 \tf@toc=\write7
 \openout7 = `tsm.toc'.
 
- [0]
+ [-1] [0]
 File: Images/hcmut.png Graphic file (type png)
 <use Images/hcmut.png>
-Package pdftex.def Info: Images/hcmut.png  used on input line 204.
+Package pdftex.def Info: Images/hcmut.png  used on input line 211.
 (pdftex.def)             Requested size: 22.76076pt x 22.76115pt.
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 204.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 211.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.204 
+l.211 
        [1]
 \openout4 = `tsm.pyg'.
 
@@ -1187,7 +1187,7 @@ See the caption package documentation for explanation.
 
 File: Images/hcmut.png Graphic file (type png)
 <use Images/hcmut.png>
-Package pdftex.def Info: Images/hcmut.png  used on input line 231.
+Package pdftex.def Info: Images/hcmut.png  used on input line 237.
 (pdftex.def)             Requested size: 22.76076pt x 22.76115pt.
 [2] 
 enddocument/afterlastpage: lastpage setting LastPage.
@@ -1202,17 +1202,17 @@ runsystem(del tsm.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 31450 strings out of 475248
- 608836 string characters out of 5757813
+ 31452 strings out of 475248
+ 608767 string characters out of 5757813
  1929785 words of memory out of 5000000
- 52354 multiletter control sequences out of 15000+600000
- 563385 words of font info for 60 fonts, out of 8000000 for 9000
+ 52353 multiletter control sequences out of 15000+600000
+ 563992 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 104i,25n,111p,597b,636s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on tsm.pdf (4 pages, 200149 bytes).
+ 104i,25n,111p,597b,578s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on tsm.pdf (5 pages, 227517 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
- 9 named destinations out of 1000 (max. 500000)
+ 106 PDF objects out of 1000 (max. 8388607)
+ 10 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
