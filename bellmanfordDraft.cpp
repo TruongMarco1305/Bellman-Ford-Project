@@ -1,38 +1,76 @@
 #include<iostream>
-#include<string>
 
 using namespace std;
 
-int main(){
-    int vertices, edges, starting, end;
-    cin >> vertices >> edges >> starting >> end;
-    int weightGraph[100][100];
-    for (int i = 0; i < vertices; i ++){
-        for (int j = 0; j < vertices; j++){
-            weightGraph[i][j] = -1;
+void tsm(int & numCities, int **map){
+    for (int i = 0; i < numCities; i++){
+        map[i] = new int[numCities];
+    }
+
+    int distance = 0;
+    for (int i = 0; i < numCities; i++){
+        for (int j = 0; j < numCities; j++){
+            map[i][j] = distance;
         }
     }
 
-    int a,b,c;
-    for (int i = 0; i < edges; i++){
-        cin >> a >> b >> c;
-        weightGraph[a - 1][b - 1] = c; 
+    for (int i = 0; i < numCities; i++){
+        for (int j = 0; j < numCities; j++){
+            if (i == j){
+                continue;
+            }else {
+                cout << "Input distance from city " << i + 1 << " to city " << j + 1 << ": ";
+                cin >> distance;
+                map[i][j] = distance;
+            }
+        } 
     }
-    for (int i = 0; i < vertices; i ++){
-        for (int j = 0; j < vertices; j++){
-            cout << weightGraph[i][j] << " ";
+
+    for (int i = 0; i < numCities; i++){
+        for (int j = 0; j < numCities; j++){
+            cout << map[i][j] << " ";
         }
         cout << endl;
     }
 
-    int arr[100] = {0};
-    for (int i = 0; i < )
-    int relaxedTime = 0;
-    while (relaxedTime < vertices - 1){
-
+    for (int i = 0; i < numCities; i++){
+        delete map[i];
     }
+    delete map;
 
-    int distance = INT_MAX;
-    
+}
+int main(){
+    int numCities = 7;
+    int map[7][7]{{0,6,5,5,0,0,0},
+    {0,0,0,0,-1,0,0},
+    {0,-2,0,0,1,0,0},
+    {0,0,-2,0,0,-1,0},
+    {0,0,0,0,0,0,3},
+    {0,0,0,0,0,0,3},
+    {0,0,0,0,0,0,0}};
+    int distance[7];
+    int *movingRoad = new int[numCities];
+    distance[0] = 0;
+    for (int i = 1; i < numCities; i++){
+        distance[i] = INT_MAX;
+    }
+    int relaxTime = 0;
+    while (relaxTime < numCities - 1){
+        for (int u = 0; u < numCities; u++){
+            for (int v = 0; v < numCities; v ++){
+                if (map[u][v] == 0){
+                    continue;
+                } else {
+                    if (distance[u] + map[u][v] < distance[v]){
+                        distance[v] = distance[u] + map[u][v];
+                    }
+                }
+            }
+        }
+        relaxTime ++;
+    }
+    for (int i = 0; i < numCities; i++){
+        cout << distance[i] << " ";
+    } 
     return 0;
 }
