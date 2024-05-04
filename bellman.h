@@ -20,3 +20,5 @@
 
 using namespace std;
 
+void BF(int ** graph, int numberOfVertices, char startVertex, int * BellmanFordValue, int * BellmanFordPrevious);
+string BF_Path(int ** graph,int numberOfVertices,char startVertex, char goalVertex);
