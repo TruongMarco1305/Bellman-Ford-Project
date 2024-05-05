@@ -11,6 +11,7 @@
 #include "bellman.h"
 
 void BF(int ** graph, int numberOfVertices, char startVertex, int * BellmanFordValue, int * BellmanFordPrevious){
+    int source = int(startVertex) - 64;
     for (int i = 0; i < numberOfVertices; i++){
         BellmanFordValue[i] = INT_MAX;
     }
@@ -32,7 +33,8 @@ void BF(int ** graph, int numberOfVertices, char startVertex, int * BellmanFordV
 }
 
 string BF_Path(int ** graph,int numberOfVertices,char startVertex, char goalVertex){
-    string ans = to_string(int(goalVertex - 'A'));
-    
+    string ans;
+    ans += startVertex;
+     
 }
 

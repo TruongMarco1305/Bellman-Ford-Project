@@ -4,8 +4,6 @@
 using namespace std;
 
 void initCityMap(int & numCities, int ** map){
-    cout << "Input the number of city: ";
-    cin >> numCities;
     for (int i = 0; i < numCities; i++){
         map[i] = new int[numCities];
     }
@@ -15,7 +13,7 @@ void initCityMap(int & numCities, int ** map){
             if (i == j){
                 map[i][j] = 0;
             }else{
-                cout << "Input distance from city " << i + 1 << " to city " << j + 1 << ": ";
+                cout << "Input distance from city " << char(i + 1 + 64) << " to city " << char(j + 1 + 64) << ": ";
                 cin >> map[i][j];
             }
         } 
@@ -38,15 +36,17 @@ void relaxation(int*distance,int*prev,int**map,int numCities){
 }
 
 int main(){
-    int numCities;
+    int numCities = 3;
     int **map = new int *[numCities];
     initCityMap(numCities,map);
 
     int *distance = new int[numCities];
     int *prev = new int[numCities];
     int source;
+    char input;
     cout << "Input the source city: ";
-    cin >> source;
+    cin >> input;
+    source = int(input) - 64;
     for (int i = 0; i < numCities; i++){
         distance[i] = 1000;
         prev[i] = -1;
@@ -83,8 +83,8 @@ int main(){
                 path.push(prev[tmp-1]);
                 tmp = prev[tmp-1];
             }
-            cout << "The shortest distance from source city to city " << finish << ": " << length << endl;
-            cout << "The path from source city to city " << finish << " with shortest distance: ";
+            cout << "The shortest distance from source city to city " << char(finish + 64) << ": " << length << endl;
+            cout << "The path from source city to city " << char(finish + 64) << " with shortest distance: ";
             cout << path.top();
             while (!path.empty()){
                 path.pop();

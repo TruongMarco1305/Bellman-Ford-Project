@@ -12,9 +12,7 @@
 #include "tsm.h"
 
 void program(){
-    int numberOfVertices;
-    cout << "Input the number of vertices: ";
-    cin >> numberOfVertices;     
+    int numberOfVertices = 26;     
     int **graph = new int *[numberOfVertices];
     for (int i = 0; i < numberOfVertices; i++){
         graph[i] = new int[numberOfVertices];
@@ -24,7 +22,7 @@ void program(){
             if (i == j){
                 graph[i][j] = 0;
             }else{
-                cout << "Input the weight for edge between vertex " << i + 1 << " to vertex " << j + 1 << ": ";
+                cout << "Input the weight for edge from vertex " << char(i + 1 + 64) << " to vertex " << char(j + 1 + 64) << ": ";
                 cin >> graph[i][j];
             }
         } 
