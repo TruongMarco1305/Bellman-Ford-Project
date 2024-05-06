@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void initCityMap(int & numCities, int ** map){
+/*void initCityMap(int & numCities, int ** map){
     for (int i = 0; i < numCities; i++){
         map[i] = new int[numCities];
     }
@@ -33,31 +33,98 @@ void relaxation(int*distance,int*prev,int**map,int numCities){
             }
         }
     }
+}*/
+
+void BF(int ** graph, int numberOfVertices, char startVertex, int * BellmanFordValue, int * BellmanFordPrevious){
+    for (int i = 0; i < numberOfVertices; i++){
+        BellmanFordValue[i] = INT_MAX;
+    }
+    BellmanFordValue[int(startVertex - 'A')] = 0;
+    for (int i = 0; i < numberOfVertices - 1; i ++){
+        for (int u = 0; u < numberOfVertices; u++){
+            for (int v = 0; v < numberOfVertices; v++){
+                if (graph[u][v] == 0){
+                    continue;
+                } else {
+                    if (BellmanFordValue[u] + graph[u][v] < BellmanFordValue[v]){
+                        BellmanFordValue[v] = BellmanFordValue[u] + graph[u][v];
+                        BellmanFordPrevious[v] = u;
+                    }
+                }
+            }
+        }
+    }
+}
+
+void BF_Path(int ** graph,int numberOfVertices,char startVertex, char goalVertex){
+    stack <int> path;
+    int source = int(startVertex - 64);
+    int finish = source;
+    int tmp;
+    while (finish <= numberOfVertices){
+        path.push(fi2nish);
+        int length = distance[finish - 1];
+        tmp = finish;
+        while (tmp != source){
+            path.push(prev[tmp-1]);
+            tmp = prev[tmp-1];
+        }
+        cout << "The shortest distance from source city to city " << char(finish + 64) << ": " << length << endl;
+        cout << "The path from source city to city " << char(finish + 64) << " with shortest distance: ";
+        cout << path.top();
+        while (!path.empty()){
+            path.pop();
+            if (path.empty()) break;
+            cout << "->" << path.top();
+        }
+        cout << "\n";
+        finish ++;
+    } 
 }
 
 int main(){
-    int numCities = 3;
-    int **map = new int *[numCities];
-    initCityMap(numCities,map);
+    int numberOfVertices = 3;     
+    int **graph = new int *[numberOfVertices];
+    for (int i = 0; i < numberOfVertices; i++){
+        graph[i] = new int[numberOfVertices];
+    }
+    for (int i = 0; i < numberOfVertices; i++){
+        for (int j = 0; j < numberOfVertices; j++){
+            if (i == j){
+                graph[i][j] = 0;
+            }else{
+                cout << "Input the weight for edge from vertex " << char(i + 1 + 64) << " to vertex " << char(j + 1 + 64) << ": ";
+                cin >> graph[i][j];
+            }
+        } 
+    }
 
-    int *distance = new int[numCities];
-    int *prev = new int[numCities];
-    int source;
-    char input;
-    cout << "Input the source city: ";
-    cin >> input;
-    source = int(input) - 64;
-    for (int i = 0; i < numCities; i++){
-        distance[i] = 1000;
-        prev[i] = -1;
+    int *BellmanFordValue = new int[numberOfVertices];
+    int *BellmanFordPrevious = new int[numberOfVertices];
+    for (int i = 0; i < numberOfVertices; i++){
+        BellmanFordValue[i] = -1;
+        BellmanFordPrevious[i] = -1;
     }
-    distance[source - 1] = 0;
-    int relaxTime = 0;
-    while (relaxTime < numCities - 1){
-        relaxation(distance,prev,map,numCities);
-        relaxTime ++;
+    char startVertex;
+    cout << "Input the start vertex: ";
+    cin >> startVertex;
+
+    BF(graph,numberOfVertices,startVertex,BellmanFordValue,BellmanFordPrevious);
+    
+    char goalVertex;
+    cout << "Input the goal vertex: ";
+    cin >> goalVertex;
+
+    BF_Path(graph,numberOfVertices,startVertex,goalVertex);
+    
+    for (int i = 0; i < numberOfVertices; i++){
+        delete graph[i];
     }
-    bool negativeCycle = false;
+    delete graph;
+
+    delete BellmanFordValue;
+    delete BellmanFordPrevious;
+    /*bool negativeCycle = false;
     for (int u = 0; u < numCities; u++){
         for(int v = 0; v < numCities; v++){
             if (map[u][v] == 0){
@@ -68,8 +135,8 @@ int main(){
                 }
             }
         }
-    }
-    if (negativeCycle){
+    }*/
+    /*if (negativeCycle){
         cout << "Error: Contains circuit of negative weight";
     } else{
         stack<int> path;
@@ -96,6 +163,6 @@ int main(){
         }
     }
     delete distance;
-    delete prev;
+    delete prev;*/
     return 0;
 }
