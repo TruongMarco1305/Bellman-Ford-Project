@@ -1,6 +1,7 @@
 #include<iostream>
 #include<stack>
 #include<vector>
+#define INFINITY INT_MAX;
 
 using namespace std;
 
@@ -8,7 +9,7 @@ const int numberOfVertices = 4;
 
 void BF(int graph[][numberOfVertices], int numberOfVertices, char startVertex, int BellmanFordValue[], int BellmanFordPrevious[]){
     for (int i = 0; i < numberOfVertices; i++){
-        BellmanFordValue[i] = INT_MAX;
+        BellmanFordValue[i] = INFINITY;
     }
     BellmanFordValue[int(startVertex - 'A')] = 0;
     for (int i = 0; i < numberOfVertices - 1; i ++){
@@ -125,7 +126,7 @@ void solve(int graph[][numberOfVertices], vector<vector<int>> memo, int source, 
             for (int next = 0; next < numberOfVertices; next ++){
                 if (next == source || notIn(next,subset)) continue;
                 int subsetWithoutNext = subset ^ (1 << next);
-                int minDist = INT_MAX;
+                int minDist = INFINITY;
                 for (int end = 0; end < numberOfVertices; end++){
                     if (end == source || end == next || notIn(end,subset)) continue;
                     int newDistance = memo[end][subsetWithoutNext] + graph[end][next];
@@ -149,7 +150,7 @@ string findOptimalTour(int graph[][numberOfVertices], vector<vector<int>> memo, 
     tour += " ";
     for (int i = 1; i < numberOfVertices; i++){
         int bestIndex = -1;
-        int bestDist = INT_MAX;
+        int bestDist = INFINITY;
         for (int j = 0; j < numberOfVertices; j++){
             if (j == source || notIn(j,state)) continue;
             int newDist = memo[j][state] + graph[j][lastIndex];

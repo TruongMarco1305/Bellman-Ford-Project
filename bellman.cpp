@@ -12,7 +12,7 @@
 
 void BF(int graph[][numberOfVertices], const int numberOfVertices, char startVertex, int BellmanFordValue[], int BellmanFordPrevious[]){
     for (int i = 0; i < numberOfVertices; i++){
-        BellmanFordValue[i] = INT_MAX;
+        BellmanFordValue[i] = INFINITY;
     }
     BellmanFordValue[int(startVertex - 'A')] = 0;
     for (int i = 0; i < numberOfVertices - 1; i ++){

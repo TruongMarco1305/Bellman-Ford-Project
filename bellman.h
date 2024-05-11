@@ -19,6 +19,7 @@
 #include <sstream>
 #include <stack>
 #include <vector>
+#define INFINITY INT_MAX;
 
 using namespace std;
 

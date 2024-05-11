@@ -10,8 +10,12 @@
 
 #include"bellman.h"
 
-void setUp(int graph[][numberOfVertices], vector<vector<int>> memo, char startVertex, int numberOfVertices);
-void solve(int graph[][numberOfVertices], vector<vector<int>> memo, char startVertex, int numberOfVertices);
-int findMinCost(int graph[][numberOfVertices], vector<vector<int>> memo, char startVertex, int numberOfVertices);
-void findOptimalTour(int graph[][numberOfVertices], vector<vector<int>> memo, char startVertex, int numberOfVertices);
+bool notIn(int elm, int subset);
+void initCombinations(int set, int at, int r, int n, vector<int> subsets);
+vector<int> combinations(int r, int n);
+
+void setUp(int graph[][numberOfVertices], vector<vector<int>> memo, int source, int numberOfVertices);
+void solve(int graph[][numberOfVertices], vector<vector<int>> memo, int source, int numberOfVertices);
+string findOptimalTour(int graph[][numberOfVertices], vector<vector<int>> memo, int source, int numberOfVertices);
+
 void Traveling(int graph[][numberOfVertices] , char startVertex);
