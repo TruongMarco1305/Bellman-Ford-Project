@@ -10,8 +10,7 @@
 
 #include "bellman.h"
 
-void BF(int ** graph, int numberOfVertices, char startVertex, int * BellmanFordValue, int * BellmanFordPrevious){
-    int source = int(startVertex) - 64;
+void BF(int graph[][numberOfVertices], const int numberOfVertices, char startVertex, int BellmanFordValue[], int BellmanFordPrevious[]){
     for (int i = 0; i < numberOfVertices; i++){
         BellmanFordValue[i] = INT_MAX;
     }
@@ -24,7 +23,7 @@ void BF(int ** graph, int numberOfVertices, char startVertex, int * BellmanFordV
                 } else {
                     if (BellmanFordValue[u] + graph[u][v] < BellmanFordValue[v]){
                         BellmanFordValue[v] = BellmanFordValue[u] + graph[u][v];
-                        BellmanFordPrevious[v] = u + 1;
+                        BellmanFordPrevious[v] = u;
                     }
                 }
             }
@@ -32,9 +31,50 @@ void BF(int ** graph, int numberOfVertices, char startVertex, int * BellmanFordV
     }
 }
 
-string BF_Path(int ** graph,int numberOfVertices,char startVertex, char goalVertex){
+bool detectNegativeCycle(int graph[][numberOfVertices], const int numberOfVertices, char startVertex, int BellmanFordValue[], int BellmanFordPrevious[]){
+   for (int u = 0; u < numberOfVertices; u++){
+        for(int v = 0; v < numberOfVertices; v++){
+            if (graph[u][v] == 0){
+                continue;
+            } else {
+                if (BellmanFordValue[u] + graph[u][v] < BellmanFordValue[v]){
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+void BF_Path(int graph[][numberOfVertices], const int numberOfVertices,char startVertex, char goalVertex){
     string ans;
-    ans += startVertex;
-     
+    bool negativeCycle;
+    int BellmanFordValue[numberOfVertices];
+    int BellmanFordPrevious[numberOfVertices];
+    for (int i = 0; i < numberOfVertices; i++){
+        BellmanFordValue[i] = -1;
+        BellmanFordPrevious[i] = -1;
+    }
+    BF(graph,numberOfVertices,startVertex,BellmanFordValue,BellmanFordPrevious);
+    negativeCycle = detectNegativeCycle(graph,numberOfVertices,startVertex,BellmanFordValue,BellmanFordPrevious);
+    if (negativeCycle){
+        cout << "Errors: Contains circuit of negative weight";
+    } else {
+        stack <int> path;
+        int source = int(startVertex - 'A');
+        int goal = int(goalVertex - 'A');    
+        path.push(goal);
+        int tmp = goal;
+        while (tmp != source){
+            path.push(BellmanFordPrevious[tmp]);
+            tmp = BellmanFordPrevious[tmp];
+        }
+        while (!path.empty()){
+            ans += char(path.top() + 'A');
+            ans += " ";
+            path.pop();
+        }
+    }
+    cout << ans;
 }
 

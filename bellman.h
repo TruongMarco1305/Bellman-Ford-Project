@@ -17,8 +17,14 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <stack>
+#include <vector>
 
 using namespace std;
 
-void BF(int ** graph, int numberOfVertices, char startVertex, int * BellmanFordValue, int * BellmanFordPrevious);
-string BF_Path(int ** graph,int numberOfVertices,char startVertex, char goalVertex);
+const int numberOfVertices = 7;
+const long long SIZE = pow(2,numberOfVertices); 
+
+void BF(int graph[][numberOfVertices], const int numberOfVertices, char startVertex, int BellmanFordValue[], int BellmanFordPrevious[]);
+bool detectNegativeCycle(int graph[][numberOfVertices], const int numberOfVertices, char startVertex, int BellmanFordValue[], int BellmanFordPrevious[]);
+void BF_Path(int graph[][numberOfVertices], const int numberOfVertices,char startVertex, char goalVertex);
