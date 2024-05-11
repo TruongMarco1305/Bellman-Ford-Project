@@ -163,10 +163,10 @@
 	\multicolumn{3}{l}{\textbf{{\Large \textcolor{blue}{Assignment 1} }}}\\
 	\\
 	
-	\multicolumn{3}{c}{\textbf{{\Huge \textcolor{blue}{The Travelling Salemen Problem}}}}\\
+	\multicolumn{3}{c}{\textbf{{\huge \textcolor{blue}{Using Dynamic Programming}}}}\\
 	\\
     
-    \multicolumn{3}{c}{\textbf{{\Huge \textcolor{blue}{Using Dynamic Programming}}}}\\
+    \multicolumn{3}{c}{\textbf{{\huge \textcolor{blue}{To Solve The Travelling Saleman Problem}}}}\\
 	\\
 	\arrayrulecolor{blue}\hline \\ \\
 
@@ -186,7 +186,7 @@
 \vspace{4cm}
 
 \begin{center}
-{\textbf{\Large Ho Chi Minh City, 4/2024}}
+{\textbf{\Large Ho Chi Minh City, May 2024}}
 \end{center}
 \end{titlepage}
 
@@ -204,7 +204,72 @@
 \newpage
 
 %\thispagestyle{empty}
-\section{Problem 1}
+\section{Introduction}
+
+In this report, I will show how we can use the dynamic programming technique to solve the Traveling Saleman Problem with clearly explaination about the approaching method and the purpose of each functions of the source code. 
+
+\section{The Traveling Salemen Problem}
+\subsection{History}
+
+\subsection{Approaching}
+
+\subsection{tspprogram}
+
+\begin{minted}[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=1.2,
+	fontsize=\footnotesize,
+	linenos
+	]{cpp}
+void tspproblem(){
+    int cityMap[numberOfVertices][numberOfVertices];
+    for (int i = 0; i < numberOfVertices; i++){
+        for (int j = 0; j < numberOfVertices; j++){
+            if (i == j){
+                cityMap[i][j] = 0;
+            }else{
+                cout << "Input the distance from city " << char(i + 65) << " to city " << char(j + 65) << ": ";
+                cin >> cityMap[i][j];
+            }
+        } 
+    }
+
+    char startCity;
+    cout << "Input the start city: ";
+    cin >> startCity;
+
+    Traveling(cityMap,startCity);
+}
+\end{minted}
+\subsection{Travling function}
+\begin{minted}[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=1.2,
+	fontsize=\footnotesize,
+	linenos
+	]{cpp}
+void Traveling(int cityMap[][numberOfVertices],char startVertex){
+    vector<vector<int>> memo(numberOfVertices,vector<int>(1 << numberOfVertices,0));
+    int source = int(startVertex - 'A');
+
+    setUp(cityMap,memo,source,numberOfVertices);
+    solve(cityMap,memo,source,numberOfVertices);
+    
+    cout << findOptimalTour(cityMap,memo,source,numberOfVertices);
+}
+\end{minted}
+
+\subsection{}
+
+\subsection{}
+
+\subsection{}
+
+\subsection{Dynamic Programming}
+
+\section{Conclusion}
 BLA BLA BLA
 
 \pagebreak

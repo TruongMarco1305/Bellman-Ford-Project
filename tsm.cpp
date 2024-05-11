@@ -1,13 +1,3 @@
-/*
-* Ho Chi Minh City University of Technology
-* Faculty of Computer Science and Engineering
-* Code for "Travelling salesman related functions"
-* Discrete Structure (CO1007)
-* Author: Truong Gia Ky Nam
-* ID: 2352787
-* Email: nam.truonggiaky@hcmut.edu.vn
-*/
-
 #include"tsm.h"
 
 bool notIn(int elm, int subset){
@@ -37,17 +27,17 @@ vector<int> combinations(int r, int n){
     return subsets;
 }
 
-void setUp(int graph[][numberOfVertices], vector<vector<int>> memo, int source, int numberOfVertices){
+void setUp(int cityMap[][numberOfVertices], vector<vector<int>> memo, int source, int numberOfVertices){
     for (int i = 0; i < numberOfVertices; i++){
         if (i == source){
             continue;
         } else {
-            memo[i][1 << source | 1 << i] = graph[source][i];
+            memo[i][1 << source | 1 << i] = cityMap[source][i];
         }
     }
 }
 
-void solve(int graph[][numberOfVertices], vector<vector<int>> memo, int source, int numberOfVertices){
+void solve(int cityMap[][numberOfVertices], vector<vector<int>> memo, int source, int numberOfVertices){
     vector<int> set;
     for (int r = 3; r <= numberOfVertices; r++){
         for(int subset : combinations(r,numberOfVertices)){
@@ -58,7 +48,7 @@ void solve(int graph[][numberOfVertices], vector<vector<int>> memo, int source, 
                 int minDist = INFINITY;
                 for (int end = 0; end < numberOfVertices; end++){
                     if (end == source || end == next || notIn(end,subset)) continue;
-                    int newDistance = memo[end][subsetWithoutNext] + graph[end][next];
+                    int newDistance = memo[end][subsetWithoutNext] + cityMap[end][next];
                     if (newDistance < minDist){
                         minDist = newDistance;
                     }
@@ -69,7 +59,7 @@ void solve(int graph[][numberOfVertices], vector<vector<int>> memo, int source, 
     }
 }
 
-string findOptimalTour(int graph[][numberOfVertices], vector<vector<int>> memo, int source, int numberOfVertices){
+string findOptimalTour(int cityMap[][numberOfVertices], vector<vector<int>> memo, int source, int numberOfVertices){
     int lastIndex = source;
     int state = (1 << numberOfVertices) - 1;
     string tour;
@@ -80,7 +70,7 @@ string findOptimalTour(int graph[][numberOfVertices], vector<vector<int>> memo, 
         int bestDist = INFINITY;
         for (int j = 0; j < numberOfVertices; j++){
             if (j == source || notIn(j,state)) continue;
-            int newDist = memo[j][state] + graph[j][lastIndex];
+            int newDist = memo[j][state] + cityMap[j][lastIndex];
             if (newDist < bestDist){
                 bestIndex = j;
                 bestDist = newDist;
@@ -97,13 +87,13 @@ string findOptimalTour(int graph[][numberOfVertices], vector<vector<int>> memo, 
     return tour;
 }
 
-void Traveling(int graph[][numberOfVertices],char startVertex){
+void Traveling(int cityMap[][numberOfVertices],char startVertex){
     vector<vector<int>> memo(numberOfVertices,vector<int>(1 << numberOfVertices,0));
     int source = int(startVertex - 'A');
 
-    setUp(graph,memo,source,numberOfVertices);
-    solve(graph,memo,source,numberOfVertices);
+    setUp(cityMap,memo,source,numberOfVertices);
+    solve(cityMap,memo,source,numberOfVertices);
     
-    cout << findOptimalTour(graph,memo,source,numberOfVertices);
+    cout << findOptimalTour(cityMap,memo,source,numberOfVertices);
 }
 

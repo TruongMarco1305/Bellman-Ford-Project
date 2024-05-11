@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2024.2.24)  11 MAY 2024 09:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2024.2.24)  12 MAY 2024 00:13
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1140,7 +1140,7 @@ Package hyperref Info: Link coloring ON on input line 134.
 \@outlinefile=\write6
 \openout6 = `tsm.out'.
 
-<Images/hcmut.png, id=10, 289.08pt x 291.9708pt>
+<Images/hcmut.png, id=50, 289.08pt x 291.9708pt>
 File: Images/hcmut.png Graphic file (type png)
 <use Images/hcmut.png>
 Package pdftex.def Info: Images/hcmut.png  used on input line 150.
@@ -1163,33 +1163,44 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 \openout7 = `tsm.toc'.
 
  [-1] [0]
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/emacs.pygstyle) (_minted-tsm/4DB4A2A09597CF2C8BF938DE4FEC730BA067318730A09B34580375E34AB17A5C.pygtex
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2.
+)
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/86960C76C9C2988A459C51E0FABDB454A067318730A09B34580375E34AB17A5C.pygtex)
 File: Images/hcmut.png Graphic file (type png)
 <use Images/hcmut.png>
-Package pdftex.def Info: Images/hcmut.png  used on input line 211.
+Package pdftex.def Info: Images/hcmut.png  used on input line 276.
 (pdftex.def)             Requested size: 22.76076pt x 22.76115pt.
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 211.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 276.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.211 
+l.276 
        [1]
+File: Images/hcmut.png Graphic file (type png)
+<use Images/hcmut.png>
+Package pdftex.def Info: Images/hcmut.png  used on input line 276.
+(pdftex.def)             Requested size: 22.76076pt x 22.76115pt.
+ [2]
 \openout4 = `tsm.pyg'.
 
- (_minted-tsm/emacs.pygstyle) (_minted-tsm/D5543C05FC92B4C0DB7DB6F5B6A61463A067318730A09B34580375E34AB17A5C.pygtex
-LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 4.
-)
+ (_minted-tsm/D5543C05FC92B4C0DB7DB6F5B6A61463A067318730A09B34580375E34AB17A5C.pygtex)
 
 Package caption Warning: Unused \captionsetup[table] on input line 112.
 See the caption package documentation for explanation.
 
 File: Images/hcmut.png Graphic file (type png)
 <use Images/hcmut.png>
-Package pdftex.def Info: Images/hcmut.png  used on input line 237.
+Package pdftex.def Info: Images/hcmut.png  used on input line 302.
 (pdftex.def)             Requested size: 22.76076pt x 22.76115pt.
-[2] 
+[3] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (tsm.aux)
  ***********
@@ -1197,22 +1208,22 @@ LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
  ***********
 Package rerunfilecheck Info: File `tsm.out' has not changed.
-(rerunfilecheck)             Checksum: 58E6794638A1400BCDEA8456A7E62B6E;91.
+(rerunfilecheck)             Checksum: 1894DF66EBA60D07800A59D0E83158B3;1153.
 runsystem(del tsm.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 31452 strings out of 475248
- 608767 string characters out of 5757813
- 1929785 words of memory out of 5000000
- 52353 multiletter control sequences out of 15000+600000
- 563992 words of font info for 62 fonts, out of 8000000 for 9000
+ 31489 strings out of 475248
+ 610370 string characters out of 5757813
+ 1931785 words of memory out of 5000000
+ 52373 multiletter control sequences out of 15000+600000
+ 564597 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 104i,25n,111p,597b,578s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 104i,25n,111p,717b,571s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on tsm.pdf (5 pages, 227151 bytes).
+Output written on tsm.pdf (6 pages, 248539 bytes).
 PDF statistics:
- 106 PDF objects out of 1000 (max. 8388607)
- 10 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 163 PDF objects out of 1000 (max. 8388607)
+ 21 named destinations out of 1000 (max. 500000)
+ 106 words of extra memory for PDF output out of 10000 (max. 10000000)
 

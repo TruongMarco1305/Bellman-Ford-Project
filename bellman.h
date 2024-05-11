@@ -1,16 +1,18 @@
 /*
 * Ho Chi Minh City University of Technology
 * Faculty of Computer Science and Engineering
-* Code for "Bellman-Ford related functions"
-* Discrete Structure (CO1007)
+* Bellman-Ford related functions
+* DISCRETE STRUCTURE May 2024
 * Author: Truong Gia Ky Nam
 * ID: 2352787
 * Email: nam.truonggiaky@hcmut.edu.vn
 */
 
+#ifndef _BELLMAN_H_
+#define _BELLMAN_H_
+
 #include <iostream>
 #include <iomanip>
-#include <stdio.h>
 #include <cmath>
 #include <cstring>
 #include <climits>
@@ -24,8 +26,10 @@
 using namespace std;
 
 const int numberOfVertices = 7;
-const long long SIZE = pow(2,numberOfVertices); 
+const long long SIZE = 2 << (numberOfVertices - 1); 
 
 void BF(int graph[][numberOfVertices], const int numberOfVertices, char startVertex, int BellmanFordValue[], int BellmanFordPrevious[]);
 bool detectNegativeCycle(int graph[][numberOfVertices], const int numberOfVertices, char startVertex, int BellmanFordValue[], int BellmanFordPrevious[]);
 void BF_Path(int graph[][numberOfVertices], const int numberOfVertices,char startVertex, char goalVertex);
+
+#endif

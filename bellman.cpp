@@ -1,13 +1,3 @@
-/*
-* Ho Chi Minh City University of Technology
-* Faculty of Computer Science and Engineering
-* Code for "Bellman-Ford related functions"
-* Discrete Structure (CO1007)
-* Author: Truong Gia Ky Nam
-* ID: 2352787
-* Email: nam.truonggiaky@hcmut.edu.vn
-*/
-
 #include "bellman.h"
 
 void BF(int graph[][numberOfVertices], const int numberOfVertices, char startVertex, int BellmanFordValue[], int BellmanFordPrevious[]){
