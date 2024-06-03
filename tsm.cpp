@@ -1,99 +1,126 @@
 #include"tsm.h"
 
-bool notIn(int elm, int subset){
-    return ((1 << elm) & subset) == 0;
-}
-
-void initCombinations(int set, int at, int r, int n, vector<int> subsets){
-    int elementsLeftToPick = n - at;
-    if (elementsLeftToPick < r) return;
-
-    if (r == 0){
-        subsets.push_back(set);
-    } else {
-        for (int i = at; i < n; i++){
-            set = set | (1 << i);
-
-            initCombinations(set, i + 1, r - 1, n, subsets);
-
-            set = set & ~ (1 << i);
-        }
-    }
-}
-
-vector<int> combinations(int r, int n){
-    vector<int> subsets;
-    initCombinations(0,0,r,n,subsets);
-    return subsets;
-}
-
-void setUp(int cityMap[][numberOfVertices], vector<vector<int>> memo, int source, int numberOfVertices){
-    for (int i = 0; i < numberOfVertices; i++){
-        if (i == source){
+void findTwoMin(int G[20][20], int numCities, int i, int &first, int &second)
+{
+    first = INT_MAX, second = INT_MAX;
+    for (int j = 0; j < numCities; j++)
+    {
+        if (i == j)
             continue;
-        } else {
-            memo[i][1 << source | 1 << i] = cityMap[source][i];
+        if (G[i][j] <= first)
+        {
+            second = first;
+            first = G[i][j];
+        }
+        else if (G[i][j] <= second && G[i][j] != first)
+        {
+            second = G[i][j];
         }
     }
 }
 
-void solve(int cityMap[][numberOfVertices], vector<vector<int>> memo, int source, int numberOfVertices){
-    vector<int> set;
-    for (int r = 3; r <= numberOfVertices; r++){
-        for(int subset : combinations(r,numberOfVertices)){
-            if (notIn(source,subset)) continue;
-            for (int next = 0; next < numberOfVertices; next ++){
-                if (next == source || notIn(next,subset)) continue;
-                int subsetWithoutNext = subset ^ (1 << next);
-                int minDist = INFINITY;
-                for (int end = 0; end < numberOfVertices; end++){
-                    if (end == source || end == next || notIn(end,subset)) continue;
-                    int newDistance = memo[end][subsetWithoutNext] + cityMap[end][next];
-                    if (newDistance < minDist){
-                        minDist = newDistance;
-                    }
+void branchAndBoundTSP(int G[20][20], int numCities, int (&curr_path)[21], int &curr_bound, int curr_weight
+, int level, bool (&visited)[20], int &min_cost, int (&final_path)[21])
+{
+    if (level == numCities)
+    {
+        if (G[curr_path[level - 1]][curr_path[0]] != 0)
+        {
+            int curr_res = curr_weight +
+                           G[curr_path[level - 1]][curr_path[0]];
+
+            if (curr_res < min_cost)
+            {
+                for (int i = 0; i < numCities; i++)
+                {
+                    final_path[i] = curr_path[i];
                 }
-                memo[next][subset] = minDist;
+                final_path[numCities] = curr_path[0];
+                min_cost = curr_res;
+            }
+        }
+    }
+    else
+    {
+        for (int i = 0; i < numCities; i++)
+        {
+            if (G[curr_path[level - 1]][i] != 0 &&
+                visited[i] == false)
+            {
+                int temp = curr_bound;
+                curr_weight += G[curr_path[level - 1]][i];
+
+                int firstMinCurr, secondMinCurr;
+                findTwoMin(G, numCities, curr_path[level - 1], firstMinCurr, secondMinCurr);
+                int firstMinNext, secondMinNext;
+                findTwoMin(G, numCities, i, firstMinNext, secondMinNext);
+
+                curr_bound -= ((secondMinCurr + firstMinNext) / 2);
+
+                // curr_bound -= ((secondMin(G, numCities, curr_path[level - 1]) + firstMin(G, numCities, i)) / 2);
+
+                if (curr_bound + curr_weight < min_cost)
+                {
+                    curr_path[level] = i;
+                    visited[i] = true;
+
+                    branchAndBoundTSP(G, numCities, curr_path, curr_bound, curr_weight, level + 1, visited, min_cost, final_path);
+                }
+
+                curr_weight -= G[curr_path[level - 1]][i];
+                curr_bound = temp;
+
+                for (int i = 0; i < numCities + 1; i++)
+                {
+                    visited[i] = false;
+                }
+
+                for (int j = 0; j <= level - 1; j++)
+                {
+                    visited[curr_path[j]] = true;
+                }
             }
         }
     }
 }
 
-string findOptimalTour(int cityMap[][numberOfVertices], vector<vector<int>> memo, int source, int numberOfVertices){
-    int lastIndex = source;
-    int state = (1 << numberOfVertices) - 1;
-    string tour;
-    tour += char(source + 'A');
-    tour += " ";
-    for (int i = 1; i < numberOfVertices; i++){
-        int bestIndex = -1;
-        int bestDist = INFINITY;
-        for (int j = 0; j < numberOfVertices; j++){
-            if (j == source || notIn(j,state)) continue;
-            int newDist = memo[j][state] + cityMap[j][lastIndex];
-            if (newDist < bestDist){
-                bestIndex = j;
-                bestDist = newDist;
-            }
-        }
-        tour += char(bestIndex + 'A');
-        tour += " ";
-        state = state ^ (1 << bestIndex);
-        lastIndex = bestIndex;
+string Traveling(int G[20][20], int numCities, char startVertex)
+{
+
+    int curr_path[21] = {-1};
+    bool visited[20] = {false};
+    int final_path[21] = {-1};
+    int min_cost = INT_MAX;
+    int curr_bound = 0;
+    string ans;
+
+    for (int i = 0; i < numCities; i++)
+    {
+        int first, second;
+        findTwoMin(G, numCities, i, first, second);
+        curr_bound += (first + second);
+        // curr_bound += (firstMin(G,numCities,i) + secondMin(G,numCities,i));
     }
 
-    tour += char(source + 'A');
+    if (curr_bound % 2 == 0)
+    {
+        curr_bound = curr_bound / 2;
+    }
+    else
+    {
+        curr_bound = curr_bound / 2 + 1;
+    }
 
-    return tour;
+    visited[int(startVertex - 'A')] = true;
+    curr_path[0] = int(startVertex - 'A');
+
+    branchAndBoundTSP(G, numCities, curr_path, curr_bound, 0, 1, visited, min_cost, final_path);
+
+    for (int i = 0; i <= numCities; i++)
+    {
+        ans += char(final_path[i] + 'A');
+        ans += " ";
+    }
+
+    return ans;
 }
-
-void Traveling(int cityMap[][numberOfVertices],char startVertex){
-    vector<vector<int>> memo(numberOfVertices,vector<int>(1 << numberOfVertices,0));
-    int source = int(startVertex - 'A');
-
-    setUp(cityMap,memo,source,numberOfVertices);
-    solve(cityMap,memo,source,numberOfVertices);
-    
-    cout << findOptimalTour(cityMap,memo,source,numberOfVertices);
-}
-

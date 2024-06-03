@@ -19,17 +19,12 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include <stack>
 #include <vector>
-#define INFINITY INT_MAX;
 
 using namespace std;
 
-const int numberOfVertices = 7;
-const long long SIZE = 2 << (numberOfVertices - 1); 
-
-void BF(int graph[][numberOfVertices], const int numberOfVertices, char startVertex, int BellmanFordValue[], int BellmanFordPrevious[]);
-bool detectNegativeCycle(int graph[][numberOfVertices], const int numberOfVertices, char startVertex, int BellmanFordValue[], int BellmanFordPrevious[]);
-void BF_Path(int graph[][numberOfVertices], const int numberOfVertices,char startVertex, char goalVertex);
+void BF(int graph[20][20], int numberOfVertices, char startVertex, int BellmanFordValue[20], int BellmanFordPrevious[20]);
+bool detectNegativeCycle(int graph[20][20], int numberOfVertices, char startVertex, int BellmanFordValue[20], int BellmanFordPrevious[20]);
+string BF_Path(int graph[20][20], int numberOfVertices,char startVertex, char goalVertex);
 
 #endif

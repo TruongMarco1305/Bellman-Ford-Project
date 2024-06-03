@@ -1,11 +1,23 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
 \contentsline {section}{\numberline {2}The Traveling Salemen Problem}{1}{section.2}%
-\contentsline {subsection}{\numberline {2.1}History}{1}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Approaching}{1}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}tspprogram}{1}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Travling function}{1}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}}{2}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}}{2}{subsection.2.6}%
-\contentsline {subsection}{\numberline {2.7}}{2}{subsection.2.7}%
-\contentsline {subsection}{\numberline {2.8}Dynamic Programming}{2}{subsection.2.8}%
-\contentsline {section}{\numberline {3}Conclusion}{2}{section.3}%
+\contentsline {subsection}{\numberline {2.1}Overview}{1}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Traveling Saleman Problem implementation}{1}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Traveling Saleman Problem solving methods}{1}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Branch and Bound Algorithm}{2}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Overview}{2}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Some basic concepts}{2}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Applications of Branch and Bound}{2}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Advantages and Disadvantages}{2}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Detailed Explanation of the Algorithm}{3}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Initialization}{3}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Branching}{3}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Bounding}{3}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Pruning}{4}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Termination}{4}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Implementation Details}{4}{section.5}%
+\contentsline {section}{\numberline {6}Complexity Analysis}{4}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Time Complexity}{4}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Space complexity}{4}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Experimental Results}{4}{section.7}%
+\contentsline {section}{\numberline {8}Challenges and Improvements}{4}{section.8}%
+\contentsline {section}{\numberline {9}Conclusion}{4}{section.9}%

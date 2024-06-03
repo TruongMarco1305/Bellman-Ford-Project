@@ -10,12 +10,6 @@
 
 #include"bellman.h"
 
-bool notIn(int elm, int subset);
-void initCombinations(int set, int at, int r, int n, vector<int> subsets);
-vector<int> combinations(int r, int n);
-
-void setUp(int cityMap[][numberOfVertices], vector<vector<int>> memo, int source, int numberOfVertices);
-void solve(int cityMap[][numberOfVertices], vector<vector<int>> memo, int source, int numberOfVertices);
-string findOptimalTour(int cityMap[][numberOfVertices], vector<vector<int>> memo, int source, int numberOfVertices);
-
-void Traveling(int cityMap[][numberOfVertices] , char startVertex);
+void findTwoMin(int G[20][20], int numCities, int i, int &first, int &second);
+void branchAndBoundTSP(int G[20][20], int numCities, int (&curr_path)[20], int &curr_bound, int curr_weight, int level, bool (&visited)[20], int &min_cost, int (&final_path)[20]);
+string Traveling(int G[20][20], int numCities, char startVertex);
