@@ -1,15 +1,27 @@
 /*
 * Ho Chi Minh City University of Technology
 * Faculty of Computer Science and Engineering
-* Bellman-Ford related functions
+* Traveling Saleman Problem related functions
 * DISCRETE STRUCTURE May 2024
 * Author: Truong Gia Ky Nam
 * ID: 2352787
 * Email: nam.truonggiaky@hcmut.edu.vn
 */
 
-#include"bellman.h"
+#ifndef _TSP_H_
+#define _TSP_H_
 
-void findTwoMin(int G[20][20], int numCities, int i, int &first, int &second);
-void branchAndBoundTSP(int G[20][20], int numCities, int (&curr_path)[20], int &curr_bound, int curr_weight, int level, bool (&visited)[20], int &min_cost, int (&final_path)[20]);
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <cstring>
+#include <climits>
+#include <string>
+
+using namespace std;
+
+void findTwoMin(int G[20][20], int numCities, int firstMin[20], int secondMin[20]);
+void branchAndBoundTSP(int G[20][20], int numCities, int (&currentPath)[21], int &currentBound, int currentCost, int level, bool (&visited)[20], int &finalCost, int (&finalPath)[21], int firstMin[20], int secondMin[20]);
 string Traveling(int G[20][20], int numCities, char startVertex);
+
+#endif //_TSP_H_

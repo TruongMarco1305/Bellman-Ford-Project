@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Finding two minimum edges function having an end at every vertex}
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{findTwoMin}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{G}\PYG{p}{[}\PYG{l+m+mi}{20}\PYG{p}{][}\PYG{l+m+mi}{20}\PYG{p}{],}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{numCities}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{firstMin}\PYG{p}{[}\PYG{l+m+mi}{20}\PYG{p}{],}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{secondMin}\PYG{p}{[}\PYG{l+m+mi}{20}\PYG{p}{]);}
+\end{Verbatim}

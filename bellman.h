@@ -17,9 +17,6 @@
 #include <cstring>
 #include <climits>
 #include <string>
-#include <fstream>
-#include <sstream>
-#include <vector>
 
 using namespace std;
 
@@ -27,4 +24,4 @@ void BF(int graph[20][20], int numberOfVertices, char startVertex, int BellmanFo
 bool detectNegativeCycle(int graph[20][20], int numberOfVertices, char startVertex, int BellmanFordValue[20], int BellmanFordPrevious[20]);
 string BF_Path(int graph[20][20], int numberOfVertices,char startVertex, char goalVertex);
 
-#endif
+#endif //_BELLMAN_H_

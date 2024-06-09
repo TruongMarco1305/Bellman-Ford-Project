@@ -2,73 +2,91 @@
 
 using namespace std;
 
-void findTwoMin(int G[20][20], int numCities, int i, int &first, int &second)
-{
-    first = INT_MAX, second = INT_MAX;
-    for (int j = 0; j < numCities; j++)
-    {
-        if (i == j)
-            continue;
-        if (G[i][j] <= first)
-        {
-            second = first;
-            first = G[i][j];
+//Finding two minimum edges function having an end at vertex i and store it in minimum arrays
+void findTwoMin(int G[20][20], int numCities, int firstMin[20], int secondMin[20]){
+    for(int i = 0; i < numCities; i++){
+        firstMin[i] = 100000;
+        secondMin[i] = 100000;
+        //Find the first minimum value
+        for(int j = 0; j < numCities; j++){
+            if(i == j) continue;
+            if(firstMin[i] >= G[i][j]) firstMin[i] = G[i][j];
         }
-        else if (G[i][j] <= second && G[i][j] != first)
-        {
-            second = G[i][j];
+        //Find the second minimum value
+        for(int j = 0; j < numCities; j++){
+            if(i == j) continue;
+            if(secondMin[i] >= G[i][j] && G[i][j] > firstMin[i]) secondMin[i] = G[i][j];
         }
     }
 }
 
-void branchAndBoundTSP(int G[20][20], int numCities, int (&curr_path)[20], int &curr_bound, int curr_weight, int level, bool (&visited)[20], int &min_cost, int (&final_path)[20])
+void branchAndBoundTSP(int G[20][20], int numCities, int (&currentPath)[21], int &currentBound, int currentCost
+, int level, bool (&visited)[20], int &finalCost, int (&finalPath)[21], int firstMin[20], int secondMin[20])
 {
+    //Base case: When the search tree has reached the level N
+    //which mean the algorithm has covered all nodes
     if (level == numCities)
     {
-        if (G[curr_path[level - 1]][curr_path[0]] != 0)
+        //Check if there is a path from last vertex in the current path to the start vertex
+        if (G[currentPath[level - 1]][currentPath[0]] != 0)
         {
-            int curr_res = curr_weight +
-                           G[curr_path[level - 1]][curr_path[0]];
+            //The total weight of the current path
+            int currentResult = currentCost +
+                           G[currentPath[level - 1]][currentPath[0]];
 
-            if (curr_res < min_cost)
+            //Update the final cost and final path
+            //if the current path is more optimal
+            if (currentResult < finalCost)
             {
+                //Make the current path is the final path
                 for (int i = 0; i < numCities; i++)
                 {
-                    final_path[i] = curr_path[i];
+                    finalPath[i] = currentPath[i];
                 }
-                final_path[numCities] = curr_path[0];
-                min_cost = curr_res;
+                finalPath[numCities] = currentPath[0];
+                finalCost = currentResult;
             }
         }
     }
-    else
+    else //While the algorithm doesn't reach level N
     {
+        //Iterate for all vertices to build the tree recursively
         for (int i = 0; i < numCities; i++)
         {
-            if (G[curr_path[level - 1]][i] != 0 &&
+            //Consider the next vertex 
+            //if it is not visited 
+            //and it connects to the last vertex within the current path
+            if (G[currentPath[level - 1]][i] != 0 &&
                 visited[i] == false)
             {
-                int temp = curr_bound;
-                curr_weight += G[curr_path[level - 1]][i];
+                //Using a temporary to store the current bound
+                //For backtracking
+                int temp = currentBound;
 
-                int firstMinCurr, secondMinCurr;
-                findTwoMin(G, numCities, curr_path[level - 1], firstMinCurr, secondMinCurr);
-                int firstMinNext, secondMinNext;
-                findTwoMin(G, numCities, i, firstMinNext, secondMinNext);
+                //Add the weight of the consider edges to the current path's cost
+                currentCost += G[currentPath[level - 1]][i];
 
-                curr_bound -= ((secondMinCurr + firstMinNext) / 2);
-
-                if (curr_bound + curr_weight < min_cost)
-                {
-                    curr_path[level] = i;
-                    visited[i] = true;
-
-                    branchAndBoundTSP(G, numCities, curr_path, curr_bound, curr_weight, level + 1, visited, min_cost, final_path);
+                if(level == 1){
+                    currentBound -= (firstMin[currentPath[level - 1]] + firstMin[i])/2;
+                } else {
+                    currentBound -= (secondMin[currentPath[level - 1]] + firstMin[i])/2;
                 }
 
-                curr_weight -= G[curr_path[level - 1]][i];
-                curr_bound = temp;
+                //Check if the actual lower bound smaller than the minimum cost, explore the node further
+                if (currentBound + currentCost < finalCost)
+                {
+                    currentPath[level] = i;
+                    visited[i] = true;
 
+                    branchAndBoundTSP(G, numCities, currentPath, currentBound, currentCost, level + 1, visited, finalCost, finalPath, firstMin, secondMin);
+                }
+
+                //Else prune the node by resetting all change to current cost and current bound
+                //Or if the exploration success, backtracking to explore other solutions  
+                currentCost -= G[currentPath[level - 1]][i];
+                currentBound = temp;
+
+                //Reset the visited array
                 for (int i = 0; i < numCities + 1; i++)
                 {
                     visited[i] = false;
@@ -76,9 +94,8 @@ void branchAndBoundTSP(int G[20][20], int numCities, int (&curr_path)[20], int &
 
                 for (int j = 0; j <= level - 1; j++)
                 {
-                    visited[curr_path[j]] = true;
+                    visited[currentPath[j]] = true;
                 }
-
             }
         }
     }
@@ -86,38 +103,52 @@ void branchAndBoundTSP(int G[20][20], int numCities, int (&curr_path)[20], int &
 
 string Traveling(int G[20][20], int numCities, char startVertex)
 {
-
-    int curr_path[20] = {-1};
+    if (numCities == 1){
+        string ans;
+        ans += startVertex;
+        return ans;
+    }
+    //Initialization 
+    int currentPath[21] = {-1};
     bool visited[20] = {false};
-    int final_path[20] = {-1};
-    int min_cost = INT_MAX;
-    int curr_bound = 0;
+    int finalPath[21] = {-1};
+
+    int firstMin[20] = {-1};
+    int secondMin[20] = {-1};
+
+    int finalCost = 100000;
+    int currentBound = 0;
     string ans;
 
+    //Calculate the bound for any tour
     for (int i = 0; i < numCities; i++)
     {
-        int first, second;
-        findTwoMin(G, numCities, i, first, second);
-        curr_bound += (first + second);
+        currentBound += (firstMin[i] + secondMin[i]);
     }
 
-    if (curr_bound % 2 == 0)
+    //Rounding off the bound
+    if (currentBound % 2 == 0)
     {
-        curr_bound = curr_bound / 2;
+        currentBound = currentBound / 2;
     }
     else
     {
-        curr_bound = curr_bound / 2 + 1;
+        currentBound = currentBound / 2 + 1;
     }
 
+    //Store the starting vertex to the beginning of the current path
     visited[int(startVertex - 'A')] = true;
-    curr_path[0] = int(startVertex - 'A');
+    currentPath[0] = int(startVertex - 'A');
 
-    branchAndBoundTSP(G, numCities, curr_path, curr_bound, 0, 1, visited, min_cost, final_path);
+    //Call to branchAndBound with current path cost is 0 and explore the tree from level 1. 
+    branchAndBoundTSP(G, numCities, currentPath, currentBound, 0, 1, visited, finalCost, finalPath, firstMin, secondMin);
 
+    //After the optimal solution is found
+    //Return it in the string form
     for (int i = 0; i <= numCities; i++)
     {
-        ans += char(final_path[i] + 'A');
+        ans += char(finalPath[i] + 'A');
+        if (i == numCities) break;
         ans += " ";
     }
 
@@ -126,6 +157,7 @@ string Traveling(int G[20][20], int numCities, char startVertex)
 
 int pathlength(int G[20][20], int numCities, string output)
 {
+    if(output.length() == 1) return 0;
     int length = 0;
     for (int i = 0; i < output.length() - 2; i += 2)
     {
@@ -140,23 +172,25 @@ int pathlength(int G[20][20], int numCities, string output)
 int main()
 {
     // Adjacency matrix for the given G
-    int G[20][20] = {{0, 141, 134, 152, 173, 289, 326, 329, 285, 401, 388, 366, 343, 305, 276},
-                     {141, 0, 152, 150, 153, 312, 354, 313, 249, 324, 300, 272, 247, 201, 176},
-                     {134, 152, 0, 24, 48, 168, 210, 197, 153, 280, 272, 257, 237, 210, 181},
-                     {152, 150, 24, 0, 24, 163, 206, 182, 133, 257, 248, 233, 214, 187, 158},
-                     {173, 153, 48, 24, 0, 160, 203, 167, 114, 234, 225, 210, 190, 165, 137},
-                     {289, 312, 168, 163, 160, 0, 43, 90, 124, 250, 264, 270, 264, 267, 249},
-                     {326, 354, 210, 206, 203, 43, 0, 108, 157, 271, 290, 299, 295, 303, 287},
-                     {329, 313, 197, 182, 167, 90, 108, 0, 70, 164, 183, 195, 194, 210, 201},
-                     {285, 249, 153, 133, 114, 124, 157, 70, 0, 141, 147, 148, 140, 147, 134},
-                     {401, 324, 280, 257, 234, 250, 271, 164, 141, 0, 36, 67, 88, 134, 150},
-                     {388, 300, 272, 248, 225, 264, 290, 183, 147, 36, 0, 33, 57, 104, 124},
-                     {366, 272, 257, 233, 210, 270, 299, 195, 148, 67, 33, 0, 26, 73, 96},
-                     {343, 247, 237, 214, 190, 264, 295, 194, 140, 88, 57, 26, 0, 48, 71},
-                     {305, 201, 210, 187, 165, 267, 303, 210, 147, 134, 104, 73, 48, 0, 30},
-                     {276, 176, 181, 158, 137, 249, 287, 201, 134, 150, 124, 96, 71, 30, 0}};
+// int G[20][20] = {
+//       {0, 8, 24, 63, 22, 51, 20, 20, 24, 19, 24, 78, 37, 57, 48, 57},
+//       {62, 0, 74, 100, 77, 46, 97, 79, 27, 23, 57, 33, 79, 94, 97, 85},
+//       {83, 4, 0, 75, 45, 93, 25, 31, 80, 15, 16, 70, 94, 20, 26, 7},
+//       {77, 88, 81, 0, 43, 30, 94, 39, 75, 20, 28, 98, 19, 6, 92, 82},
+//       {58, 74, 52, 32, 0, 85, 45, 24, 15, 24, 5, 99, 60, 99, 18, 86},
+//       {73, 95, 39, 19, 37, 0, 69, 12, 42, 44, 100, 70, 41, 18, 77, 99},
+//       {0, 0, 38, 52, 99, 22, 0, 63, 22, 4, 87, 28, 2, 12, 93, 20},
+//       {98, 65, 81, 36, 51, 85, 72, 0, 63, 26, 82, 62, 97, 22, 47, 39},
+//       {88, 47, 5, 25, 65, 3, 14, 28, 0, 93, 85, 81, 20, 53, 94, 79},
+//       {39, 57, 10, 19, 94, 61, 70, 31, 90, 0, 97, 12, 52, 59, 0, 99},
+//       {64, 54, 11, 69, 80, 76, 38, 60, 70, 30, 0, 10, 17, 16, 63, 10},
+//       {96, 68, 67, 72, 87, 26, 32, 23, 23, 21, 19, 0, 35, 39, 44, 2},
+//       {3, 7, 56, 14, 42, 1, 57, 80, 27, 93, 10, 37, 0, 9, 26, 66},
+//       {86, 88, 33, 53, 59, 87, 45, 57, 9, 69, 45, 95, 70, 0, 84, 38},
+//       {72, 88, 11, 95, 68, 53, 96, 91, 32, 23, 84, 8, 26, 93, 0, 1},
+//       {93, 79, 89, 25, 98, 14, 11, 8, 71, 87, 43, 15, 81, 80, 66, 0}};
     //Bkel
-    /*int G[20][20] = {{0, 0, 0, 0, 50, 77, 49, 83, 24, 0, 0, 0},     // A
+    int G[20][20] = {{0, 0, 0, 0, 50, 77, 49, 83, 24, 0, 0, 0},     // A
                      {66, 0, 0, 55, 58, 23, 79, 64, 0, 91, 0, 0},   // B
                      {26, 0, 0, 95, 0, 0, 67, 81, 0, 0, 9, 94},     // C
                      {0, 0, 0, 0, 22, 33, 77, 6, 76, 0, 5, 0},      // D
@@ -167,8 +201,9 @@ int main()
                      {81, 38, 0, 0, 9, 65, 0, 50, 0, 28, 0, 0},     // I
                      {27, 94, 9, 76, 0, 12, 0, 0, 0, 0, 47, 0},     // J
                      {42, 0, 78, 28, 0, 59, 0, 3, 0, 100, 0, 0},    // K
-                     {17, 0, 74, 38, 60, 0, 17, 19, 0, 66, 0, 0}};  // L*/
-    int n = 15;
+                     {17, 0, 74, 38, 60, 0, 17, 19, 0, 66, 0, 0}};  // L
+    //int G[20][20] = {{0}};
+    int n = 12;
     string output = Traveling(G, n, 'A');
     int cost = pathlength(G, n, output);
     cout << output << endl;

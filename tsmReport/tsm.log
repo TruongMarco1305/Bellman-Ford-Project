@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2024.2.24)  4 JUN 2024 00:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2024.2.24)  9 JUN 2024 19:57
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1146,7 +1146,7 @@ Package hyperref Info: Link coloring ON on input line 135.
 \@outlinefile=\write6
 \openout6 = `tsm.out'.
 
-<Images/hcmut.png, id=98, 289.08pt x 291.9708pt>
+<Images/hcmut.png, id=86, 289.08pt x 291.9708pt>
 File: Images/hcmut.png Graphic file (type png)
 <use Images/hcmut.png>
 Package pdftex.def Info: Images/hcmut.png  used on input line 151.
@@ -1180,61 +1180,119 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
 <to be read again> 
                    \relax 
 l.236 \subsection
-                 {Some basic concepts} [1]
-File: Images/hcmut.png Graphic file (type png)
-<use Images/hcmut.png>
-Package pdftex.def Info: Images/hcmut.png  used on input line 265.
-(pdftex.def)             Requested size: 22.76076pt x 22.76115pt.
- [2]
-Underfull \hbox (badness 10000) in paragraph at lines 270--272
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 275--279
-
- []
-
-File: Images/hcmut.png Graphic file (type png)
-<use Images/hcmut.png>
-Package pdftex.def Info: Images/hcmut.png  used on input line 368.
-(pdftex.def)             Requested size: 22.76076pt x 22.76115pt.
-[3]
+                 {Applications of Branch and Bound} [1]
 \openout4 = `tsm.pyg'.
 
- (_minted-tsm/emacs.pygstyle) (_minted-tsm/EC0CE3D5C1B0C9F78D66AB524E001089A067318730A09B34580375E34AB17A5C.pygtex
+ (_minted-tsm/emacs.pygstyle) (_minted-tsm/5031C911293FC738F593CCAC3E88B844A067318730A09B34580375E34AB17A5C.pygtex
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 3.
 File: Images/hcmut.png Graphic file (type png)
 <use Images/hcmut.png>
-Package pdftex.def Info: Images/hcmut.png  used on input line 12.
+Package pdftex.def Info: Images/hcmut.png  used on input line 4.
+(pdftex.def)             Requested size: 22.76076pt x 22.76115pt.
+ [2])
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/E49EFB6FADA53738C914D62EFE1C6C9DA067318730A09B34580375E34AB17A5C.pygtex)
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/23EEBE45C046D0037681F42F0B2DFA33A067318730A09B34580375E34AB17A5C.pygtex)
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/B4BA7405C9B06908DEAED5CF5621222FA067318730A09B34580375E34AB17A5C.pygtex)
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/3D8E78A9BDFCC605250E4A429538DA32A067318730A09B34580375E34AB17A5C.pygtex)
+File: Images/hcmut.png Graphic file (type png)
+<use Images/hcmut.png>
+Package pdftex.def Info: Images/hcmut.png  used on input line 309.
+(pdftex.def)             Requested size: 22.76076pt x 22.76115pt.
+ [3]
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/8D78343C712C03A7508514F28FE931A6A067318730A09B34580375E34AB17A5C.pygtex)
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/28D9A8FA4463EA64EB795D6739E59F02A067318730A09B34580375E34AB17A5C.pygtex)
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/64A26B69FD2447907C3C4DBB71FB5850A067318730A09B34580375E34AB17A5C.pygtex)
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/F3D333A66EA8C09997BBA87DC8FC0F13A067318730A09B34580375E34AB17A5C.pygtex)
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/B96331EC119AFFBDD7A7E313FC291723A067318730A09B34580375E34AB17A5C.pygtex
+File: Images/hcmut.png Graphic file (type png)
+<use Images/hcmut.png>
+Package pdftex.def Info: Images/hcmut.png  used on input line 8.
 (pdftex.def)             Requested size: 22.76076pt x 22.76115pt.
  [4])
 \openout4 = `tsm.pyg'.
 
- (_minted-tsm/1D288C4D8B22E9E239499DDDB7BB8796A067318730A09B34580375E34AB17A5C.pygtex
+ (_minted-tsm/88889682782DCB978097A7BAD8344705A067318730A09B34580375E34AB17A5C.pygtex
+Underfull \hbox (badness 10000) in paragraph at lines 353--1
+
+ []
+
+)
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/7C713311FDC20712D81263060F9BC3BEA067318730A09B34580375E34AB17A5C.pygtex)
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/D49598539F92C15E36F048DD75784CF2A067318730A09B34580375E34AB17A5C.pygtex)
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/BF627C8F6B2D9E58067BDAB6BB573D97A067318730A09B34580375E34AB17A5C.pygtex
 File: Images/hcmut.png Graphic file (type png)
 <use Images/hcmut.png>
-Package pdftex.def Info: Images/hcmut.png  used on input line 49.
+Package pdftex.def Info: Images/hcmut.png  used on input line 10.
 (pdftex.def)             Requested size: 22.76076pt x 22.76115pt.
  [5])
 \openout4 = `tsm.pyg'.
 
- (_minted-tsm/7620C5A0792F11DF1ABC2BAA3DE3DB39A067318730A09B34580375E34AB17A5C.pygtex
+ (_minted-tsm/FFEDCEDB7D22CFB3195CDDFB36B2D65AA067318730A09B34580375E34AB17A5C.pygtex)
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/ABCFC7FA90D24AA5FF53595CCBF24132A067318730A09B34580375E34AB17A5C.pygtex)
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/A77574177BFFBBE931213AB1C4B23606A067318730A09B34580375E34AB17A5C.pygtex
 File: Images/hcmut.png Graphic file (type png)
 <use Images/hcmut.png>
-Package pdftex.def Info: Images/hcmut.png  used on input line 42.
+Package pdftex.def Info: Images/hcmut.png  used on input line 9.
 (pdftex.def)             Requested size: 22.76076pt x 22.76115pt.
  [6])
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/EC596ADF40FFDBDBB9023DA141258353A067318730A09B34580375E34AB17A5C.pygtex)
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/B682A6F3DFCD21944C011F5DDDC586B4A067318730A09B34580375E34AB17A5C.pygtex)
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/777A33A8B7A0087A54112A6BC48528E2A067318730A09B34580375E34AB17A5C.pygtex)
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/B3DB47C031F6E10AD4831DCB4C4F9C65A067318730A09B34580375E34AB17A5C.pygtex)
+\openout4 = `tsm.pyg'.
+
+ (_minted-tsm/297031E0BAD3FBB2C422DB3FB1BE99DDA067318730A09B34580375E34AB17A5C.pygtex
+File: Images/hcmut.png Graphic file (type png)
+<use Images/hcmut.png>
+Package pdftex.def Info: Images/hcmut.png  used on input line 4.
+(pdftex.def)             Requested size: 22.76076pt x 22.76115pt.
+ [7])
 
 Package caption Warning: Unused \captionsetup[table] on input line 113.
 See the caption package documentation for explanation.
 
 File: Images/hcmut.png Graphic file (type png)
 <use Images/hcmut.png>
-Package pdftex.def Info: Images/hcmut.png  used on input line 551.
+Package pdftex.def Info: Images/hcmut.png  used on input line 520.
 (pdftex.def)             Requested size: 22.76076pt x 22.76115pt.
-[7] 
+[8] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (tsm.aux)
  ***********
@@ -1242,22 +1300,22 @@ LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
  ***********
 Package rerunfilecheck Info: File `tsm.out' has not changed.
-(rerunfilecheck)             Checksum: 35DE0B8DFB2C510C6E4FDE14C4F68A93;3585.
+(rerunfilecheck)             Checksum: 78781347B332052253231427DB0A335B;3431.
 runsystem(del tsm.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 32291 strings out of 475248
- 633634 string characters out of 5757813
- 1937785 words of memory out of 5000000
- 53151 multiletter control sequences out of 15000+600000
+ 32368 strings out of 475248
+ 644553 string characters out of 5757813
+ 1933785 words of memory out of 5000000
+ 53172 multiletter control sequences out of 15000+600000
  564932 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 104i,25n,111p,647b,946s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\tgkna\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on tsm.pdf (10 pages, 311179 bytes).
+ 104i,25n,111p,777b,946s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\tgkna\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/tgkna/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on tsm.pdf (11 pages, 298498 bytes).
 PDF statistics:
- 270 PDF objects out of 1000 (max. 8388607)
- 37 named destinations out of 1000 (max. 500000)
- 202 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 243 PDF objects out of 1000 (max. 8388607)
+ 36 named destinations out of 1000 (max. 500000)
+ 178 words of extra memory for PDF output out of 10000 (max. 10000000)
 

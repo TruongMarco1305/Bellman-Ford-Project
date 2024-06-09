@@ -1,75 +1,89 @@
 #include"tsm.h"
 
-void findTwoMin(int G[20][20], int numCities, int i, int &first, int &second)
-{
-    first = INT_MAX, second = INT_MAX;
-    for (int j = 0; j < numCities; j++)
-    {
-        if (i == j)
-            continue;
-        if (G[i][j] <= first)
-        {
-            second = first;
-            first = G[i][j];
+//Finding two minimum edges function having an end at vertex i and store it in minimum arrays
+void findTwoMin(int G[20][20], int numCities, int firstMin[20], int secondMin[20]){
+    for(int i = 0; i < numCities; i++){
+        firstMin[i] = 100000;
+        secondMin[i] = 100000;
+        //Find the first minimum value
+        for(int j = 0; j < numCities; j++){
+            if(i == j) continue;
+            if(firstMin[i] >= G[i][j]) firstMin[i] = G[i][j];
         }
-        else if (G[i][j] <= second && G[i][j] != first)
-        {
-            second = G[i][j];
+        //Find the second minimum value
+        for(int j = 0; j < numCities; j++){
+            if(i == j) continue;
+            if(secondMin[i] >= G[i][j] && G[i][j] >= firstMin[i]) secondMin[i] = G[i][j];
         }
     }
 }
 
-void branchAndBoundTSP(int G[20][20], int numCities, int (&curr_path)[21], int &curr_bound, int curr_weight
-, int level, bool (&visited)[20], int &min_cost, int (&final_path)[21])
+void branchAndBoundTSP(int G[20][20], int numCities, int (&currentPath)[21], int &currentBound, int currentCost, int level, bool (&visited)[20], int &finalCost, int (&finalPath)[21], int firstMin[20], int secondMin[20])
 {
+    //Base case: When the search tree has reached the level N
+    //which mean the algorithm has covered all nodes
     if (level == numCities)
     {
-        if (G[curr_path[level - 1]][curr_path[0]] != 0)
+        //Check if there is a path from last vertex in the current path to the start vertex
+        if (G[currentPath[level - 1]][currentPath[0]] != 0)
         {
-            int curr_res = curr_weight +
-                           G[curr_path[level - 1]][curr_path[0]];
+            //The total weight of the current path
+            int currentResult = currentCost + G[currentPath[level - 1]][currentPath[0]];
 
-            if (curr_res < min_cost)
+            //Update the final cost and final path
+            //if the current path is more optimal
+            if (currentResult < finalCost)
             {
+                //Make the current path is the final path
                 for (int i = 0; i < numCities; i++)
                 {
-                    final_path[i] = curr_path[i];
+                    finalPath[i] = currentPath[i];
                 }
-                final_path[numCities] = curr_path[0];
-                min_cost = curr_res;
+                finalPath[numCities] = currentPath[0];
+                finalCost = currentResult;
             }
         }
     }
-    else
+    else //While the algorithm doesn't reach level N
     {
+        //Iterate for all vertices to build the tree recursively
         for (int i = 0; i < numCities; i++)
         {
-            if (G[curr_path[level - 1]][i] != 0 &&
+            //Consider the next vertex 
+            //if it is not visited 
+            //and it connects to the last vertex within the current path
+            if (G[currentPath[level - 1]][i] != 0 &&
                 visited[i] == false)
             {
-                int temp = curr_bound;
-                curr_weight += G[curr_path[level - 1]][i];
+                //Using a temporary to store the current bound
+                //For backtracking
+                int temp = currentBound;
 
-                int firstMinCurr, secondMinCurr;
-                findTwoMin(G, numCities, curr_path[level - 1], firstMinCurr, secondMinCurr);
-                int firstMinNext, secondMinNext;
-                findTwoMin(G, numCities, i, firstMinNext, secondMinNext);
+                //Add the weight of the consider edges to the current path's cost
+                currentCost += G[currentPath[level - 1]][i];
 
-                curr_bound -= ((secondMinCurr + firstMinNext) / 2);
-
-                // curr_bound -= ((secondMin(G, numCities, curr_path[level - 1]) + firstMin(G, numCities, i)) / 2);
-
-                if (curr_bound + curr_weight < min_cost)
-                {
-                    curr_path[level] = i;
-                    visited[i] = true;
-
-                    branchAndBoundTSP(G, numCities, curr_path, curr_bound, curr_weight, level + 1, visited, min_cost, final_path);
+                //Different computation for level 1 from others
+                if(level == 1){
+                    currentBound -= (firstMin[currentPath[level - 1]] + firstMin[i])/2;
+                } else {
+                    currentBound -= (secondMin[currentPath[level - 1]] + firstMin[i])/2;
                 }
 
-                curr_weight -= G[curr_path[level - 1]][i];
-                curr_bound = temp;
+                //Check if the actual lower bound smaller than the minimum cost, explore the node further
+                if (currentBound + currentCost < finalCost)
+                {
+                    currentPath[level] = i;
+                    visited[i] = true;
 
+                    branchAndBoundTSP(G, numCities, currentPath, currentBound, currentCost, level + 1, visited, finalCost, finalPath, firstMin, secondMin);
+                }
+
+                //Else prune the node by resetting all change to current cost and current bound
+                //Or if the exploration success, backtracking to explore other solutions  
+                currentCost -= G[currentPath[level - 1]][i];
+                currentBound = temp;
+
+                //Reset the visited array
                 for (int i = 0; i < numCities + 1; i++)
                 {
                     visited[i] = false;
@@ -77,7 +91,7 @@ void branchAndBoundTSP(int G[20][20], int numCities, int (&curr_path)[21], int &
 
                 for (int j = 0; j <= level - 1; j++)
                 {
-                    visited[curr_path[j]] = true;
+                    visited[currentPath[j]] = true;
                 }
             }
         }
@@ -86,39 +100,55 @@ void branchAndBoundTSP(int G[20][20], int numCities, int (&curr_path)[21], int &
 
 string Traveling(int G[20][20], int numCities, char startVertex)
 {
-
-    int curr_path[21] = {-1};
+    //Check for special case
+    if (numCities == 1){
+        string ans;
+        ans += startVertex;
+        return ans;
+    }
+    //Initialization 
+    int currentPath[21] = {-1};
     bool visited[20] = {false};
-    int final_path[21] = {-1};
-    int min_cost = INT_MAX;
-    int curr_bound = 0;
+    int finalPath[21] = {-1};
+    int finalCost = 100000;
+    int currentBound = 0;
     string ans;
 
+    //Fill in the minimum and second minimum weight edge for each vertex
+    int firstMin[20] = {-1};
+    int secondMin[20] = {-1};
+    findTwoMin(G,numCities,firstMin,secondMin);
+
+    //Calculate the bound for any tour by formula:
+    //1/2 * (sum of first minimum and second minimum of all vertices)
     for (int i = 0; i < numCities; i++)
     {
-        int first, second;
-        findTwoMin(G, numCities, i, first, second);
-        curr_bound += (first + second);
-        // curr_bound += (firstMin(G,numCities,i) + secondMin(G,numCities,i));
+        currentBound += (firstMin[i] + secondMin[i]);
     }
 
-    if (curr_bound % 2 == 0)
+    //Rounding off the bound
+    if (currentBound % 2 == 0)
     {
-        curr_bound = curr_bound / 2;
+        currentBound = currentBound / 2;
     }
     else
     {
-        curr_bound = curr_bound / 2 + 1;
+        currentBound = currentBound / 2 + 1;
     }
 
+    //Store the starting vertex to the beginning of the current path
     visited[int(startVertex - 'A')] = true;
-    curr_path[0] = int(startVertex - 'A');
+    currentPath[0] = int(startVertex - 'A');
 
-    branchAndBoundTSP(G, numCities, curr_path, curr_bound, 0, 1, visited, min_cost, final_path);
+    //Call to branchAndBound with current path cost is 0 and explore the tree from level 1. 
+    branchAndBoundTSP(G, numCities, currentPath, currentBound, 0, 1, visited, finalCost, finalPath, firstMin, secondMin);
 
+    //After the optimal solution is found
+    //Return it in the string form
     for (int i = 0; i <= numCities; i++)
     {
-        ans += char(final_path[i] + 'A');
+        ans += char(finalPath[i] + 'A');
+        if (i == numCities) break;
         ans += " ";
     }
 

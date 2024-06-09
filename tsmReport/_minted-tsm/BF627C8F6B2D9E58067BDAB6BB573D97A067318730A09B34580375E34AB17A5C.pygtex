@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Base case: When the search tree has reached the level N}
+\PYG{c+c1}{//which mean the algorithm has covered all nodes}
+\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{level}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{numCities}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{c+c1}{//Check if there is a path from last vertex in the current path to the start vertex}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{G}\PYG{p}{[}\PYG{n}{currentPath}\PYG{p}{[}\PYG{n}{level}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{]][}\PYG{n}{currentPath}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]]}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{c+c1}{//The total weight of the current path}
+\PYG{+w}{        }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{currentResult}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{currentCost}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{G}\PYG{p}{[}\PYG{n}{currentPath}\PYG{p}{[}\PYG{n}{level}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{]][}\PYG{n}{currentPath}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]];}
+
+\PYG{+w}{        }\PYG{c+c1}{//Update the final cost and final path}
+\PYG{+w}{        }\PYG{c+c1}{//if the current path is more optimal}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{currentResult}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{finalCost}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{c+c1}{//Make the current path is the final path}
+\PYG{+w}{            }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{numCities}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{finalPath}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{currentPath}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{n}{finalPath}\PYG{p}{[}\PYG{n}{numCities}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{currentPath}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{];}
+\PYG{+w}{            }\PYG{n}{finalCost}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{currentResult}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

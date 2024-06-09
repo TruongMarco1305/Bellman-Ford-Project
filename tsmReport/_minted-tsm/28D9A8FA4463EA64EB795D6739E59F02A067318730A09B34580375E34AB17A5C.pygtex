@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Consider the next vertex}
+\PYG{c+c1}{//if it is not visited}
+\PYG{c+c1}{//and it connects to the last vertex within the current path}
+\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{G}\PYG{p}{[}\PYG{n}{currentPath}\PYG{p}{[}\PYG{n}{level}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{]][}\PYG{n}{i}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n}{visited}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n+nb}{false}\PYG{p}{)}
+\end{Verbatim}

@@ -21,8 +21,12 @@ void BF(int graph[20][20], int numberOfVertices, char startVertex, int BellmanFo
         unrelaxBellmanFordValue[source] = BellmanFordValue[source];
     } else {
         for (int i = 0; i < numberOfVertices; i++){
+            if(BellmanFordValue[i] == -1){
+                BellmanFordValue[i] = 100000000;
+            }
             unrelaxBellmanFordValue[i] = BellmanFordValue[i];
         }
+
     }
 
     for(int u = 0; u < numberOfVertices; u++){
@@ -33,6 +37,12 @@ void BF(int graph[20][20], int numberOfVertices, char startVertex, int BellmanFo
                 BellmanFordValue[v] = unrelaxBellmanFordValue[u] + graph[u][v];
                 BellmanFordPrevious[v] = u;
             }
+        }
+    }
+
+    for(int i = 0; i < numberOfVertices; i++){
+        if(BellmanFordValue[i] == 100000000){
+            BellmanFordValue[i] = -1;
         }
     }
 }
