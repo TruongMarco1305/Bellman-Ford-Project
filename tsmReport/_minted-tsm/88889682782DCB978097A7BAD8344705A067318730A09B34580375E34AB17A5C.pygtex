@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{c+c1}{//Check if the actual lower bound smaller than the minimum cost, explore the node further}
-\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{currentBound}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{currentCost}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{finalCost}\PYG{p}{)}
-\end{Verbatim}

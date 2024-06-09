@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{string}\PYG{+w}{ }\PYG{n+nf}{Traveling}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{G}\PYG{p}{[}\PYG{l+m+mi}{20}\PYG{p}{][}\PYG{l+m+mi}{20}\PYG{p}{],}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{numCities}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{n}{startVertex}\PYG{p}{);}
-\end{Verbatim}

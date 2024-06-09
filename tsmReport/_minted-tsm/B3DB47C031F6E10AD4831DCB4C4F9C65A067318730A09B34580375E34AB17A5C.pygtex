@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{c+c1}{//Call to branchAndBound with current path cost is 0 and explore the tree from level 1.}
-\PYG{n}{branchAndBoundTSP}\PYG{p}{(}\PYG{n}{G}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{numCities}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{currentPath}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{currentBound}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{visited}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{finalCost}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{finalPath}\PYG{p}{);}
-\end{Verbatim}

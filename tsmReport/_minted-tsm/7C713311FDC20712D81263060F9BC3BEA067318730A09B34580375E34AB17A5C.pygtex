@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{c+c1}{//Add the current node to the current path}
-\PYG{n}{currentPath}\PYG{p}{[}\PYG{n}{level}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{i}\PYG{p}{;}
-\PYG{n}{visited}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{true}\PYG{p}{;}
-
-\PYG{c+c1}{//Continue to explore recursively}
-\PYG{n}{branchAndBoundTSP}\PYG{p}{(}\PYG{n}{G}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{numCities}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{currentPath}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{currentBound}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{currentCost}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{level}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{visited}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{finalCost}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{finalPath}\PYG{p}{);}
-\end{Verbatim}
